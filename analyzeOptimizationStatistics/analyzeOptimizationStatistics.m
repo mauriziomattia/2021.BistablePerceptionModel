@@ -180,11 +180,9 @@ print('-dpdf','PCAofOptimizedParamSpace')
 %% Probe the fit error surface around a parameter point. If it is a minimum
 %  provides the standard error of the parameter found... 
 %
-% FERepetitions = 30;
-FERepetitions = 15;
-% Options.FitError.Repetitions = 4;
-Options.FitError.Repetitions = 10;
-% Options.FitError.Repetitions = 30;
+FERepetitions = 30;
+Options.Param.Labels{10} = '\beta';
+Options.Param.Labels{11} = '\alpha';
 
 tic
 estimateParameterSEofFitErrorMinima(Params, FERepetitions, Options)

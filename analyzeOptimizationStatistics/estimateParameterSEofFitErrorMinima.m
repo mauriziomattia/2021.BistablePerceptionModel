@@ -39,7 +39,8 @@ TestedParams = setdiff(1:numel(Params),Options.ParamToFix.ndx);
 % To use 'parfor', the following command has to be launched:
 %   matlabpool local 4
 %
-parfor p = 1:numel(Params)
+% parfor p = 1:numel(Params)
+for p = 1:numel(Params)
    if ismember(p,TestedParams)
       [ParamsSE(p), FESurf(p)] = CoreLoop(p, Params, DParam, FERepetitions, Options);
    end
@@ -87,8 +88,9 @@ if PlotResults
       sprintf('Repetitions = %d',FERepetitions),...
       'HorizontalAlignment','center');
    
-   set(gcf, 'PaperUnit', 'inch', 'PaperPosition', [0 0 7 8])
-   print('-deps2c','FEMinimumHighRes.eps');
+   FigSize = [7 8];
+   set(gcf,'PaperUnits','inches','PaperPosition',[0 0 FigSize],'PaperSize',FigSize);
+   print('-dpdf','FEMinimumHighRes');
 end
 
 
